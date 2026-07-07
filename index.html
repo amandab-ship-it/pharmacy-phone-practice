@@ -5,26 +5,28 @@
   async>
 </script>
 
-<style>
-  /* Center Vapi widget on the page */
-  .vapi-widget {
-    position: fixed !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    bottom: auto !important;
-    right: auto !important;
-  }
-</style>
-
 <script>
-  window.addEventListener('load', () => {
-    window.vapiSDK.run({
-      apiKey: "0ee2d047-2b55-4b08-8f67-dad8bce1595d",
-      assistant: "4c1b07e4-8dd3-4dfd-a1ce-f2e451237ffb",
-      config: {
-        position: "bottom-right"
-      }
-    });
+window.addEventListener("load", () => {
+  window.vapiSDK.run({
+    apiKey: "YOUR_API_KEY",
+    assistant: "YOUR_ASSISTANT_ID"
   });
+
+  // Wait for widget to be injected
+  const interval = setInterval(() => {
+    const btn = document.querySelector("#vapi-support-btn");
+
+    if (btn) {
+      clearInterval(interval);
+
+      btn.style.position = "fixed";
+      btn.style.top = "50%";
+      btn.style.left = "50%";
+      btn.style.bottom = "auto";
+      btn.style.right = "auto";
+      btn.style.transform = "translate(-50%, -50%)";
+      btn.style.zIndex = "99999";
+    }
+  }, 100);
+});
 </script>
